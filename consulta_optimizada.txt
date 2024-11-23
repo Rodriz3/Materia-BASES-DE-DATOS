@@ -1,0 +1,7 @@
+SELECT SC4.title
+FROM (SELECT film_id, title FROM film WHERE length BETWEEN 60 AND 120) SC4,
+	(SELECT SC2.film_id
+	 FROM (SELECT category_id FROM category WHERE name = 'Horror') SC1,
+	  	(SELECT category_id, film_id FROM film_category) SC2
+	 WHERE SC1.category_id = SC2.category_id) SC3
+WHERE SC4.film_id = SC3.film_id
